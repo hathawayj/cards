@@ -12,14 +12,13 @@ jpeg_roll <-  function(image_files,plot_color=TRUE){
   names(all_faces) <-  gsub(".jpg","",image_files)
 
   for (files in image_files){
-    browser()
     class = jpeg::readJPEG(files)
     # rows are multiple pixels
-    average_color_row = apply(class[,,3],1,mean)
-    row_lines3 = c(1:nrow(class))[average_color_row<min(average_color_row)+.035]
-    row_lines = c(row_lines3[diff(row_lines3)!=1],row_lines3[length(row_lines3)])
+    average_color_row = apply(class[,, 3], 1, mean)
+    row_lines3 = c(1:nrow(class))[average_color_row < min(average_color_row) + .035]
+    row_lines = c(row_lines3[diff(row_lines3) != 1], row_lines3[length(row_lines3)])
 
-    average_color_column = apply(class[,,3],2,mean)
+    average_color_column = apply(class[,,3], 2, mean)
     col_lines3 = c(1:ncol(class))[average_color_column<min(average_color_column)+.035]
     if(plot_color==TRUE) plot(c(apply(class[,,3],1,mean),apply(class[,,3],2,mean)))
     col_lines = c(col_lines3[diff(col_lines3)!=1],col_lines3[length(col_lines3)])
