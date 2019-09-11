@@ -4,15 +4,16 @@
 #'	@notes requires the jpeg package
 #' 	@example pdata = jpeg_roll()
 #'	@export
-jpeg_roll = function(image_files,plot_color=TRUE){
-  library(jpeg)
-  all_names = vector("list",length(image_files))
-  all_faces = vector("list",length(image_files))
-  names(all_names) = gsub(".jpg","",image_files)
-  names(all_faces) = gsub(".jpg","",image_files)
+jpeg_roll <-  function(image_files,plot_color=TRUE){
+
+  all_names <-  vector("list",length(image_files))
+  all_faces <-  vector("list",length(image_files))
+  names(all_names) <-  gsub(".jpg","",image_files)
+  names(all_faces) <-  gsub(".jpg","",image_files)
 
   for (files in image_files){
-    class = readJPEG(files)
+    browser()
+    class = jpeg::readJPEG(files)
     # rows are multiple pixels
     average_color_row = apply(class[,,3],1,mean)
     row_lines3 = c(1:nrow(class))[average_color_row<min(average_color_row)+.035]

@@ -18,19 +18,26 @@ knitr::opts_chunk$set(
 
 # https://web.byui.edu/FacultyClasses/ClassList
 
-
-#### Latest Session Example   ######
-### Could be fun to make a function that downloads the pdf documents without going to the web browser.  Not sure it is possible.
-### Nice to compile this into a package.
 # devtools::install_github("hathawayj/cards")
+library(tidyverse)
 library(cards)
 library(jpeg)
-library(grid)
 library(ggplot2)
-dir_path <- pdf_2image(file = file)
-jpg_files = fs::dir_ls(dir_path, regexp =  "jpg")
-pdata = jpeg_roll(image_files = jpg_files)
-gg_object = ggplot_faces(faces = pdata$all_faces,faces_names = pdata$all_names)
+
+```
+
+```{r code}
+pdf_path <- system.file("extdata", "faces.pdf", package = "cards")
+temp_path <- fs::path_temp()
+
+dir_path <- pdf_2image(file = pdf_path, path_out = temp_path)
+
+jpg_files <-  fs::dir_ls(dir_path, regexp =  "jpg")
+
+pdata <-  jpeg_roll(image_files = jpg_files)
+
+gg_object <-  ggplot_faces(faces = pdata$all_faces,faces_names = pdata$all_names)
+
 flashcard_pdf(gg_object,pdf_name = fs::path(dir_path, "Fall_2019.pdf"))
 flashcard_pdf(gg_object,pdf_name = fs::path(dir_path, "Fall_2019_oneside.pdf"),front_back = FALSE)
 

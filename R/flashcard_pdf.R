@@ -5,7 +5,7 @@
 #'	@param front_back states wether to make the pdf output work for a front back printer or to create two pdfs for a basic printer.  Defaults to `TRUE` for a front and back printer.
 #'	@example flashcard_pdf(gg_object,pdf_name="Fall_108_2015.pdf")
 #'	@export
-flashcard_pdf = function(ggplot_object,pdf_name="student_cards.pdf", front_back = TRUE){
+flashcard_pdf <-  function(ggplot_object,pdf_name="student_cards.pdf", front_back = TRUE){
   ##### This set of code builds the printable pdfs
   Pstudents = ggplot_object$faces
   Pstudents_picture = ggplot_object$faces_names

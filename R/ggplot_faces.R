@@ -5,7 +5,7 @@
 #'	@notes may only work if more than one image was digested in the jpeg_roll function. Requires that the ggplot2 and grid package are loaded.
 #'	@example gg_object = ggplot_faces(faces=pdata$all_faces,faces_names=pdata$all_names)
 #'	@export
-ggplot_faces = function(faces,faces_names){
+ggplot_faces <-  function(faces,faces_names){
   ### The below for loop creates all the ggplot picture objects
   faces = unlist(faces,recursive=FALSE)
   faces_names = unlist(faces_names,recursive=FALSE)
