@@ -5,7 +5,7 @@
 #'  @examples pdf_2image(files=file.choose())
 #'
 #'	@export
-pdf_2image <-  function(file = file.choose(), image_type="jpg", path_out = NULL){
+pdf_2image <-  function(file = file.choose(), image_type = "jpg", path_out = NULL){
   if(is.null(path_out)) path_out <- fs::path_dir(file)
   pdf_dat <- magick::image_read_pdf(file)
   pages <- length(pdf_dat)

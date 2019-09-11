@@ -7,30 +7,31 @@
 #'	@export
 ggplot_faces <-  function(faces,faces_names){
   ### The below for loop creates all the ggplot picture objects
-  faces = unlist(faces,recursive=FALSE)
-  faces_names = unlist(faces_names,recursive=FALSE)
-  Pstudents = Pstudents_picture=NULL
-  for (k in 1:length(faces_names)){
-    Pstudents[[k]]=qplot(1:10, 1:10, geom="blank") +
-      annotation_custom(rasterGrob(faces_names[[k]], interpolate=TRUE), xmin=-Inf, xmax=Inf, ymin=-Inf, ymax=Inf)+
-      theme(line = element_blank(),
-            text = element_blank(),
-            title = element_blank(),
-            rect = element_blank(),
-            plot.margin=unit(c(0,0,0,0),"mm"))+
-      labs(x=NULL,y=NULL)
+  faces <- unlist(faces,recursive = FALSE)
+  faces_names <- unlist(faces_names, recursive = FALSE)
+  Pstudents <- Pstudents_picture <- NULL
 
-    Pstudents_picture[[k]]=qplot(1:10, 1:10, geom="blank") +
-      annotation_custom(rasterGrob(faces[[k]], interpolate=TRUE), xmin=-Inf, xmax=Inf, ymin=-Inf, ymax=Inf)+
+  for (k in 1:length(faces_names)) {
+    Pstudents[[k]] <- qplot(1:10, 1:10, geom="blank") +
+      annotation_custom(grid::rasterGrob(faces_names[[k]], interpolate=TRUE), xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf) +
       theme(line = element_blank(),
             text = element_blank(),
             title = element_blank(),
             rect = element_blank(),
-            plot.margin=unit(c(0,0,0,0),"mm"))+
-      labs(x=NULL,y=NULL)
+            plot.margin = unit(c(0,0,0,0), "mm"))+
+      labs(x = NULL, y = NULL)
+
+    Pstudents_picture[[k]] <- qplot(1:10, 1:10, geom = "blank") +
+      annotation_custom(rasterGrob(faces[[k]], interpolate = TRUE), xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf) +
+      theme(line = element_blank(),
+            text = element_blank(),
+            title = element_blank(),
+            rect = element_blank(),
+            plot.margin=unit(c(0,0,0,0),"mm")) +
+      labs(x = NULL, y = NULL)
 
     print(Pstudents[[k]])
 
   } # end for loop
-  list(faces=Pstudents_picture,faces_names=Pstudents)
+  list(faces = Pstudents_picture, faces_names = Pstudents)
 }

@@ -4,7 +4,7 @@
 #'	@notes requires the jpeg package
 #' 	@example pdata = jpeg_roll()
 #'	@export
-jpeg_roll <-  function(image_files,plot_color=TRUE){
+jpeg_roll <-  function(image_files, plot_color = TRUE){
 
   all_names <-  vector("list",length(image_files))
   all_faces <-  vector("list",length(image_files))
@@ -19,24 +19,24 @@ jpeg_roll <-  function(image_files,plot_color=TRUE){
     row_lines = c(row_lines3[diff(row_lines3) != 1], row_lines3[length(row_lines3)])
 
     average_color_column = apply(class[,,3], 2, mean)
-    col_lines3 = c(1:ncol(class))[average_color_column<min(average_color_column)+.035]
-    if(plot_color==TRUE) plot(c(apply(class[,,3],1,mean),apply(class[,,3],2,mean)))
-    col_lines = c(col_lines3[diff(col_lines3)!=1],col_lines3[length(col_lines3)])
+    col_lines3 = c(1:ncol(class))[average_color_column < min(average_color_column) + .035]
+    if(plot_color == TRUE) plot(c(apply(class[,,3], 1, mean), apply(class[,,3], 2, mean)))
+    col_lines = c(col_lines3[diff(col_lines3) != 1], col_lines3[length(col_lines3)])
 
 
-    students = vector("list",length=(length(row_lines)-1)*(length(col_lines)-1))
-    students_picture = vector("list",length=(length(row_lines)-1)*(length(col_lines)-1))
+    students = vector("list", length = (length(row_lines) - 1)*(length(col_lines) - 1))
+    students_picture = vector("list",length = (length(row_lines) - 1)*(length(col_lines) - 1))
 
     loc = 1
-    for (i in 1:c(length(row_lines)-1)){
+    for (i in 1:c(length(row_lines) - 1)) {
       print(i)
-      rows = row_lines[i]:row_lines[i+1]
-      rows_picture = row_lines[i]:c(row_lines[i]+420)
-      for (j in 1:c(length(col_lines)-1)){
+      rows = row_lines[i]:row_lines[i + 1]
+      rows_picture = row_lines[i]:c(row_lines[i] + 420)
+      for (j in 1:c(length(col_lines) - 1)) {
         #print(j)
         #print(loc)
-        students[[loc]] = class[rows,col_lines[j]:col_lines[j+1],] # picture with text
-        students_picture[[loc]] = class[rows_picture,col_lines[j]:col_lines[j+1],]    # picture only
+        students[[loc]] = class[rows, col_lines[j]:col_lines[j + 1],] # picture with text
+        students_picture[[loc]] = class[rows_picture, col_lines[j]:col_lines[j + 1],]    # picture only
         loc = loc + 1
       } # end j
     } # end i
@@ -46,6 +46,6 @@ jpeg_roll <-  function(image_files,plot_color=TRUE){
 
     print(files)
   }
-  list(all_names=all_names,all_faces=all_faces)
+  list(all_names = all_names,all_faces = all_faces)
 
 }  # end funtion
