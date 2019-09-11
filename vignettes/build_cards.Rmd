@@ -22,7 +22,7 @@ knitr::opts_chunk$set(
 #### Latest Session Example   ######
 ### Could be fun to make a function that downloads the pdf documents without going to the web browser.  Not sure it is possible.
 ### Nice to compile this into a package.
-devtools::install_github("hathawayj/cards")
+# devtools::install_github("hathawayj/cards")
 library(cards)
 library(jpeg)
 library(grid)
