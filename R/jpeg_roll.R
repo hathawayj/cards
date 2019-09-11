@@ -2,10 +2,11 @@
 #'	@param plot_color plot the color shading values for the pixels while data is being digested in the function. Defaults to TRUE
 #'	@param image_files the image files that are to be converted
 #'	@notes requires the jpeg package
-#' 	@example pdata = jpeg_roll()
+#' 	@example pdata <- jpeg_roll()
 #'	@export
 jpeg_roll <-  function(image_files, plot_color = TRUE){
 
+  # Set-up empty vectors
   all_names <-  vector("list",length(image_files))
   all_faces <-  vector("list",length(image_files))
   names(all_names) <-  gsub(".jpg","",image_files)
