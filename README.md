@@ -5,7 +5,7 @@ To install the package.
 
 ```r
 devtools::install_github("hathawayj/cards")
-library(cards
+library(cards)
 ```
 
 load libraries

@@ -22,7 +22,7 @@ ggplot_faces <-  function(faces,faces_names){
       labs(x = NULL, y = NULL)
 
     Pstudents_picture[[k]] <- qplot(1:10, 1:10, geom = "blank") +
-      annotation_custom(rasterGrob(faces[[k]], interpolate = TRUE), xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf) +
+      annotation_custom(grid::rasterGrob(faces[[k]], interpolate = TRUE), xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf) +
       theme(line = element_blank(),
             text = element_blank(),
             title = element_blank(),
